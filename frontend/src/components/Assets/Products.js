@@ -3,7 +3,6 @@ import p2_img from "./Products-images/Blue-Tshirt.png";
 import p3_img from "./Products-images/White-Tshirt.png";
 
 
-
 let Products = [
     {
         id: 1,
