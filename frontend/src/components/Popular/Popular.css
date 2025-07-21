@@ -1,0 +1,70 @@
+.Popular {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.Popular h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+hr {
+  width: 80px;
+  margin: 0 auto 2rem auto;
+  border: 2px solid #444;
+  border-radius: 2px;
+}
+
+.popular-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+}
+
+.popular-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 250px;
+  margin: 0 0.5rem;
+}
+
+.item-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+}
+
+.item-image {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.item-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.item-price {
+  font-size: 1rem;
+  color: #555;
+}
