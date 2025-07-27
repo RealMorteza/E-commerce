@@ -1,0 +1,9 @@
+.Category-products {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+    padding: 25px;
+}
+.item-card {
+    width: 250px;
+}

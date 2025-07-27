@@ -7,7 +7,7 @@
         {
             id: 1,
             name: "تیشرت مشکی",
-            category: "مردانه",
+            category: "men",
             image: p1_img,
             price: "400"
         },
@@ -15,14 +15,14 @@
             id: 2,
             name: "تیشرت آبی",
             image: p2_img,
-            category: "مردانه",
+            category: "men",
             price: "500"
         },
         {
             id: 3,
             name: "تیشرت سفید",
             image: p3_img,
-            category: "مردانه",
+            category: "men",
             price: "500"
         }
 
