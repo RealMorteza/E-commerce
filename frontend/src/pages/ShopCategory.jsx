@@ -1,27 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Item from '../components/item/item';
-import './CSS/ShopCategory.css'
+import './CSS/ShopCategory.css';
 
 export const ShopCategory = (props) => {
-  const {Products} = useContext(ShopContext)
+  const { productList } = useContext(ShopContext);
+
+  if (!productList) {
+    return <p>در حال بارگذاری محصولات...</p>;
+  }
+
   return (
     <div className='shop-category'>
-      <img className='Category-banner' src={props.banner} />
+      <img className='Category-banner' src={props.banner} alt="بنر دسته‌بندی" />
       <div className="Category-products">
-        {Products.map((item, i) => {
-
-          if (props.category===item.category) {
-            return <Item key={i} id={item.id} name={item.name} image={item.image} />
-          }
-          else {
-            return null;
-          }
-        })}
+        {productList.map((item) => (
+          item.category === props.category ? (
+            <Item
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              price={item.price}
+            />
+          ) : null
+        ))}
       </div>
     </div>
-
-  )
-}
+  );
+};
 
 export default ShopCategory;

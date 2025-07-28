@@ -5,3 +5,7 @@
     flex-direction: row-reverse;
     gap: 5px;
 }
+.item-card a {
+  text-decoration: none;
+  color: inherit;
+}

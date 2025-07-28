@@ -9,21 +9,23 @@
             name: "تیشرت مشکی",
             category: "men",
             image: p1_img,
-            price: "400"
+            price: "500",
+            description: "Alo mohandes !",
+            full_description: "dadash dadash"
         },
         {
             id: 2,
             name: "تیشرت آبی",
             image: p2_img,
             category: "men",
-            price: "500"
+            price: "300"
         },
         {
             id: 3,
             name: "تیشرت سفید",
             image: p3_img,
             category: "men",
-            price: "500"
+            price: "200"
         }
 
     ]
