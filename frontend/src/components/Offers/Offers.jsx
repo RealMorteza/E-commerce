@@ -5,7 +5,7 @@ import Offers_img from '../Assets/General-images/Offers-img(1).jpg'
 
 export const Offers = () => {
     return (
-        <div>
+        <div className='offers-container'>
             <section class="offer-section">
                 <div class="offer-text">
                     <h1> فقط <br /> برای تو </h1>

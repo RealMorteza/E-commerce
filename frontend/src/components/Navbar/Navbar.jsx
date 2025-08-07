@@ -24,14 +24,14 @@ const Navbar = () => {
             <li>
               <span>محصولات</span>
               <ul>
-                <li onClick={() => { setMenu("men") }}>
-                  <Link to='/men'>مردانه</Link>
+                <li onClick={() => { setMenu("t-shirt") }}>
+                  <Link to='/t-shirt'>تیشرت</Link>
                 </li>
-                <li onClick={() => { setMenu("women") }}>
-                  <Link to='/women'>زنانه</Link>
+                <li onClick={() => { setMenu("shirt") }}>
+                  <Link to='/shirt'>پیراهن</Link>
                 </li>
-                <li onClick={() => { setMenu("kid") }}>
-                  <Link to='/kid'>بچه گانه</Link>
+                <li onClick={() => { setMenu("pants") }}>
+                  <Link to='/pants'>شلوار</Link>
                 </li>
               </ul>
               

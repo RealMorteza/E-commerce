@@ -1,15 +1,17 @@
 import React from 'react';
 import Products from '../Assets/Products';
 import Item from '../item/item';
-import './Popular.css'
+import './Popular.css';
 
 export const Popular = () => {
+  const popularProducts = Products.slice(0, 5);
+
   return (
-    <div className='Popular'>
+    <div className="Popular">
       <h1> محصولات محبوب </h1>
       <hr />
       <div className="popular-scroll">
-        {Products.map((product) => (
+        {popularProducts.map((product) => (
           <div className="scroll-item" key={product.id}>
             <Item
               id={product.id}

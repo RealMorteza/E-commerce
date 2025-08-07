@@ -9,10 +9,20 @@ export const ShopCategory = (props) => {
   if (!productList) {
     return <p>در حال بارگذاری محصولات...</p>;
   }
+  const categoryTranslations = {
+  "t-shirt": "تیشرت",
+  "shirt": "پیراهن",
+  "pants": "شلوار",
+};
+
+const translateCategory = (cat) => {
+  return categoryTranslations[cat] || "نامشخص";
+};
 
   return (
     <div className='shop-category'>
       <img className='Category-banner' src={props.banner} alt="بنر دسته‌بندی" />
+      <h3 className='Category-name'> <span> دسته بندی</span> {translateCategory(props.category)} </h3>
       <div className="Category-products">
         {productList.map((item) => (
           item.category === props.category ? (

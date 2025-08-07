@@ -2,6 +2,7 @@
   padding: 2rem;
   background-color: #f9f9f9;
   text-align: center;
+  overflow: hidden; /* جلوگیری از اسکرول ناخواسته */
 }
 
 .Popular h1 {
@@ -19,11 +20,13 @@ hr {
 
 .popular-scroll {
   display: flex;
+  flex-direction: row;
   overflow-x: auto;
   gap: 1rem;
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
 }
 
 .popular-scroll::-webkit-scrollbar {
@@ -58,7 +61,7 @@ hr {
 }
 
 .item-name {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: #222;

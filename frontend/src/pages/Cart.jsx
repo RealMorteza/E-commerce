@@ -30,7 +30,7 @@ const Cart = () => {
                 <img src={product.image} alt={product.name} />
                 <div className="item-info">
                   <h4>{product.name}</h4>
-                  <p>قیمت واحد: {price} تومان</p>
+                  <p>قیمت تکی: {price} تومان</p>
                   <div className="item-controls">
                     <button onClick={() => removeFromCart(product.id)}>-</button>
                     <span>{qty}</span>

@@ -9,8 +9,9 @@ import Product from './pages/Product';
 import ProductManager from './pages/ProductManager';
 import Account from './pages/Account';
 import AddProduct from './components/AddProduct/AddProduct.jsx'; 
-import men_collection_banner from './components/Assets/General-images/Formal-collection-banner.jpeg';
-import semi_formal_banner from './components/Assets/General-images/Semi-Formal-banner.jpeg';
+import shirt_banner from './components/Assets/General-images/shirt-banner.jpeg';
+import pants_banner from './components/Assets/General-images/pants-banner.jpeg';
+import t_shirt_banner from './components/Assets/General-images/t-shirt-banner.jpeg';
 
 function App() {
   return (
@@ -22,9 +23,9 @@ function App() {
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path='/' element={<Shop />} />
-          <Route path='/men' element={<ShopCategory banner={men_collection_banner} category="men" />} />
-          <Route path='/women' element={<ShopCategory banner={semi_formal_banner} category="women" />} />
-          <Route path='/kids' element={<ShopCategory category="kid" />} />
+          <Route path='/t-shirt' element={<ShopCategory banner={t_shirt_banner} category="t-shirt" />} />
+          <Route path='/shirt' element={<ShopCategory banner={shirt_banner} category="shirt" />} />
+          <Route path='/pants' element={<ShopCategory banner={pants_banner} category="pants" />} />
 
           <Route path='/product' element={<Product />} />
           { <Route path='/product/:productId' element={<Product />} /> }

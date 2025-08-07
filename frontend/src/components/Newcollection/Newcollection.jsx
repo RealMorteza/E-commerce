@@ -6,10 +6,10 @@ import './Newcollection.css'
 export const NewCollection = () => {
   return (
     <div className='NewCollection'>
-      <h1> جدید ترین دسته بندی </h1>
+      <h1> جدید ترین محصولات </h1>
       <hr />
       <div className="NewCollection-scroll">
-        {Products.map((product) => (
+        {Products.filter(p => p.tag === "new").map((product) => (
           <div className="scroll-item" key={product.id}>
             <Item
               id={product.id}

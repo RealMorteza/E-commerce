@@ -26,7 +26,7 @@
   width: 16px;
   height: 16px;
   font-family: digikala;
-  font-size: 100%;
+  font-size: 22px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;
@@ -41,6 +41,9 @@
 .item-card a {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .view-button {
@@ -53,11 +56,12 @@
   font-weight: 500;
   background-color: #3282B8;
   color: white;
-  transition: background 0.3 ease;
-  -webkit-transition: background 0.3 ease;
-  -moz-transition: background 0.3 ease;
-  -ms-transition: background 0.3 ease;
-  -o-transition: background 0.3 ease;
+  transition: background 0.5s ease-in;
+  -webkit-transition: background 0.5s ease-in;
+  -moz-transition: background 0.5s ease-in;
+  -ms-transition: background 0.5s ease-in;
+  -o-transition: background 0.5s ease-in;
+  margin: 15px 10px 0px 10px;
 }
 
 .view-button:hover {
