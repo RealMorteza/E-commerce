@@ -27,7 +27,7 @@ const AddProduct = () => {
     }
 
     setProductList([...productList, { ...newProduct, id: Date.now() }]);
-    alert('✅ محصول با موفقیت اضافه شد!');
+    alert(' محصول با موفقیت اضافه شد! ✅ ');
     setNewProduct({
       id: '',
       name: '',

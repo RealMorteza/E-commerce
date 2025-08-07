@@ -58,12 +58,12 @@ const ShopContextProvider = ({ children }) => {
     return Object.values(cartItems).reduce((a, b) => a + b, 0);
   };
 
-  // ✅ تابع حذف محصول
+
   const deleteProduct = (id) => {
     setProductList((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // ✅ ارسال تابع deleteProduct به context
+
   const contextValue = {
     productList,
     setProductList,
@@ -73,7 +73,7 @@ const ShopContextProvider = ({ children }) => {
     deleteFromCart,
     getCartTotal,
     getTotalItems,
-    deleteProduct, // ⬅️ این خط رو اضافه کردی ✅
+    deleteProduct, 
   };
 
   return (

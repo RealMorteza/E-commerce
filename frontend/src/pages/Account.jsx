@@ -15,7 +15,7 @@ const Account = () => {
     }
   }, [user, navigate]);
 
-  // اگر هنوز لاگین نیست کاربر، چیزی رندر نکن
+
   if (!user) return null;
 
   return (

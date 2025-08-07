@@ -43,3 +43,18 @@ code {
   src: url("./components/Assets/fonts/IRANSansX-ExtraBold.woff2");
   font-weight: 800;
 }
+@font-face {
+    font-family: digikala;
+    src: url(./components/Assets/fonts//Digikala.eot);
+    src: url(./components/Assets/fonts//Digikala.eot?#iefix) format("eot"), url(./components/Assets/fonts//Digikala.woff2) format("woff2"), url(./components/Assets/fonts//Digikala.woff) format("woff"), url(./components/Assets/fonts//Digikala.ttf) format("truetype")
+}
+@font-face {
+  font-family: "iransans-fa";
+  src: url("./components/Assets/fonts/IRANSansXFaNum-Regular.woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "iransans-fa";
+  src: url("./components/Assets/fonts/IRANSansXFaNum-Bold.woff2");
+  font-weight: 700;
+}

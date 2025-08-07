@@ -14,13 +14,12 @@ const Navbar = () => {
       <nav>
         <div className="nav-right">
           <img src={logo_pic} alt="لوگو" />
-          <span>فروشگاه من</span>
         </div>
 
         <div className="nav-center">
           <ul>
             <li onClick={() => { setMenu("Home") }}>
-              <Link to='/'>خانه</Link>
+              <Link to='/product-manager'>مدیریت محصول </Link>
             </li>
             <li>
               <span>محصولات</span>
@@ -35,12 +34,17 @@ const Navbar = () => {
                   <Link to='/kid'>بچه گانه</Link>
                 </li>
               </ul>
+              
             </li>
+            <li onClick={() => { setMenu("Home") }}>
+              <Link to='/'>خانه</Link>
+            </li>
+            
           </ul>
         </div>
 
         <div className="nav-left">
-          <Link to='/login'><button>ورود</button></Link>
+          <Link to='/login'><button>حساب کاربری</button></Link>
           <Link to='/cart' className="cart-link">
             <img src={cart_icon} alt="سبد خرید" />
             {getTotalItems() > 0 && (

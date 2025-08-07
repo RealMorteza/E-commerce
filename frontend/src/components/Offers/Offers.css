@@ -32,11 +32,12 @@
 }
 
 .offer-text button {
-    background-color: #ff4444;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 12px 30px;
+    font-weight: bold;
     font-size: 1rem;
-    border: none;
+    border: 3px solid #0F4C75;
     border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -44,11 +45,12 @@
 }
 
 .offer-text button:hover {
-    background-color: #e63b3b;
+    background-color: #0F4C75;
+    color: white;
 }
 
 .offer-image img {
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
     object-fit: contain;
     border-radius: 28% 62% 57% 33% / 25% 33% 67% 75%;
@@ -58,9 +60,13 @@
     .offer-section {
         flex-direction: column;
         text-align: center;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        width: fit-content;
+        min-height: 200px;
+        padding: 20px;
     }
 
-    .offer-image {
-        margin-top: 30px;
-    }
 }

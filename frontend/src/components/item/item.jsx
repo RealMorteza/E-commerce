@@ -10,8 +10,9 @@ const Item = ({ id, name, image, price }) => {
         <h3 className="item-name">{name}</h3>
         <div className="price">
           <p className="item-price">{price}</p>
-          <p>تومان</p>
         </div>
+
+        <button className='view-button'> مشاهده </button>
       </Link>
     </div>
   );

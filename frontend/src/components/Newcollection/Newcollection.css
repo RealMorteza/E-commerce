@@ -23,11 +23,13 @@ hr {
   gap: 1rem;
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .NewCollection-scroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
+  /* Chrome, Safari */
 }
 
 .scroll-item {
@@ -41,7 +43,7 @@ hr {
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  padding: 5px 5px 15px 5px;
   text-align: center;
   transition: transform 0.3s ease;
 }

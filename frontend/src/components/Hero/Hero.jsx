@@ -7,7 +7,7 @@ export const Hero = () => {
         <div class="hero">
             <div class="hero-text">
                 <h3>فقط جدیدترین‌ها</h3>
-                <h1>مجموعه‌های جدید 👋<br/>برای همه</h1>
+                <h1>مجموعه‌های جدید <br/>برای همه</h1>
                 <button class="btn">مشاهده جدیدترین مجموعه</button>
             </div>
             <div class="hero-image">
