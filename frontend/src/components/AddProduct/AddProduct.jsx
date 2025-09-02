@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import { useNavigate, Link } from "react-router-dom";
-import "./AddProduct.css"; // ⬅️ استایل جدا
+import "./AddProduct.css"; 
 
 const AddProduct = () => {
   const { addProduct } = useContext(ShopContext);
@@ -59,7 +59,6 @@ const AddProduct = () => {
       const created = await addProduct(payload);
       alert("✅ محصول با موفقیت اضافه شد.");
       if (created?.id) navigate(`/product/${created.id}`);
-      // یا: navigate("/product-manager");
     } catch (err) {
       setError(err?.message || "خطا در افزودن محصول");
       console.error(err);

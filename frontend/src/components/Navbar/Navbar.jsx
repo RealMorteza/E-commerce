@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="nav-center">
           <ul>
             <li onClick={() => { setMenu("Home") }}>
-              <Link to='/product-manager'>مدیریت محصول </Link>
+              <Link to='/product-manager'></Link>
             </li>
             <li>
               <span>محصولات</span>
@@ -34,12 +34,12 @@ const Navbar = () => {
                   <Link to='/pants'>شلوار</Link>
                 </li>
               </ul>
-              
+
             </li>
             <li onClick={() => { setMenu("Home") }}>
               <Link to='/'>خانه</Link>
             </li>
-            
+
           </ul>
         </div>
 

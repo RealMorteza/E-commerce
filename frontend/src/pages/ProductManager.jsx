@@ -1,27 +1,41 @@
-// src/pages/ProductManager.jsx
+
 import React, { useContext, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import './CSS/ProductManager.css';
+window.onload = function() {
+  if (window.location.pathname === "/pm"){ 
+        let userInput = prompt("لطفاً متن خود را وارد کنید:");
+
+    if (userInput === "1383") {
+        alert("ورود موفقیت‌آمیز بود.");
+    } else {
+
+        alert("خطا: مقدار وارد شده اشتباه است.");
+        window.location.href = "http://localhost:3000"; 
+    }
+};
+   }
+
+
 
 const ProductManager = () => {
   const {
     productList,
     productsLoading,
     productsError,
-    deleteProduct, // از کانتکست: DELETE به سرور
+    deleteProduct,
   } = useContext(ShopContext);
 
   const navigate = useNavigate();
-  const [deletingId, setDeletingId] = useState(null); // برای نشان‌دادن وضعیت حذف
+  const [deletingId, setDeletingId] = useState(null); 
 
   const handleDelete = async (id) => {
     const ok = window.confirm('آیا از حذف این محصول مطمئن هستید؟');
     if (!ok) return;
     try {
       setDeletingId(id);
-      await deleteProduct(id); // ← درخواست DELETE به API و سپس setProductList
-      // می‌تونی اینجا toast هم بذاری
+      await deleteProduct(id); 
     } catch (err) {
       console.error(err);
       alert('حذف محصول ناموفق بود.');
@@ -79,8 +93,6 @@ const ProductManager = () => {
                 <p>قیمت: {Number(product.price || 0).toLocaleString('fa-IR')} تومان</p>
               </div>
               <div className="actions">
-                {/* اگر صفحهٔ ویرایش داری: */}
-                {/* <button className="edit-btn" onClick={() => navigate(`/edit-product/${product.id}`)}>ویرایش</button> */}
                 <button
                   className="delete-btn"
                   disabled={deletingId === product.id}

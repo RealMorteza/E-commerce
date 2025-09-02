@@ -1,4 +1,4 @@
-// src/pages/product.jsx
+
 import React, { useContext, useMemo } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { useParams, Link } from 'react-router-dom';
@@ -8,14 +8,14 @@ const Product = () => {
   const { productList, productsLoading, productsError } = useContext(ShopContext);
   const { productId } = useParams();
 
-  // محصول متناظر با id
+
   const product = useMemo(() => {
     if (!Array.isArray(productList)) return null;
     const idNum = Number(productId);
     return productList.find((item) => item.id === idNum);
   }, [productList, productId]);
 
-  // حالت لودینگ
+
   if (productsLoading) {
     return (
       <div style={{ padding: '2rem' }}>
@@ -24,7 +24,7 @@ const Product = () => {
     );
   }
 
-  // حالت خطا در گرفتن لیست
+
   if (productsError) {
     return (
       <div style={{ padding: '2rem' }}>
@@ -37,7 +37,6 @@ const Product = () => {
     );
   }
 
-  // اگر محصول پیدا نشد
   if (!product) {
     return (
       <div style={{ padding: '2rem' }}>
@@ -47,7 +46,7 @@ const Product = () => {
     );
   }
 
-  // نمایش صفحهٔ محصول
+
   return (
     <div>
       <ProductPage product={product} />

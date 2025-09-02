@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useMemo, useState } from "react";
 
 export const ShopContext = createContext(null);
 
-// اگر خواستی بعداً از env بیاد، اینو تغییر بده
 const API_BASE = "http://localhost:3001/api";
 
 const ShopContextProvider = ({ children }) => {
@@ -11,31 +10,25 @@ const ShopContextProvider = ({ children }) => {
   const [productsLoading, setProductsLoading] = useState(true);
   const [productsError, setProductsError] = useState(null);
 
-  // خواندن محصولات از سرور
-  useEffect(() => {
-    let cancelled = false;
-    const load = async () => {
-      try {
-        setProductsLoading(true);
-        setProductsError(null);
-        const res = await fetch(`${API_BASE}/products`);
-        if (!res.ok) throw new Error(`Failed to fetch products: ${res.status}`);
-        const data = await res.json();
-        if (!cancelled) setProductList(Array.isArray(data) ? data : []);
-      } catch (err) {
-        if (!cancelled) setProductsError(err.message || "خطا در دریافت محصولات");
-        console.error(err);
-      } finally {
-        if (!cancelled) setProductsLoading(false);
-      }
-    };
-    load();
-    return () => { cancelled = true; };
-  }, []);
+useEffect(() => {
+  setProductsLoading(true);
+  setProductsError(null);
 
-  // افزودن محصول (Server)
+  fetch(`${API_BASE}/products`)
+    .then((res) => {
+      if (!res.ok) throw new Error(`Failed to fetch products: ${res.status}`);
+      return res.json();
+    })
+    .then((data) => setProductList(Array.isArray(data) ? data : []))
+    .catch((err) => {
+      console.error(err);
+      setProductsError(err.message || "خطا در دریافت محصولات");
+    })
+    .finally(() => setProductsLoading(false));
+}, []);
+
+
   const addProduct = async (payload) => {
-    // payload نمونه: { name, category, price, image, image2, image3, sizing_image, description, full_description, tag }
     const res = await fetch(`${API_BASE}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -50,23 +43,7 @@ const ShopContextProvider = ({ children }) => {
     return created;
   };
 
-  // ویرایش/به‌روزرسانی محصول (Server)
-  const updateProduct = async (id, patch) => {
-    const res = await fetch(`${API_BASE}/products/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(patch),
-    });
-    if (!res.ok) {
-      const txt = await res.text().catch(() => "");
-      throw new Error(`به‌روزرسانی محصول ناموفق بود: ${res.status} ${txt}`);
-    }
-    const updated = await res.json();
-    setProductList((prev) => prev.map((p) => (p.id === updated.id ? updated : p)));
-    return updated;
-  };
 
-  // حذف محصول (Server)
   const deleteProduct = async (id) => {
     const res = await fetch(`${API_BASE}/products/${id}`, { method: "DELETE" });
     if (!res.ok && res.status !== 204) {
@@ -83,7 +60,6 @@ const ShopContextProvider = ({ children }) => {
   );
   const [cartItems, setCartItems] = useState(initialCart);
 
-  // سینک سبد خرید با localStorage
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -132,7 +108,6 @@ const ShopContextProvider = ({ children }) => {
     productsError,
     setProductList,
     addProduct,
-    updateProduct,
     deleteProduct,
 
     // Cart
