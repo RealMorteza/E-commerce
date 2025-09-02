@@ -1,4 +1,4 @@
-// UserContext.jsx
+
 import React, { createContext, useState, useEffect } from 'react';
 
 export const UserContext = createContext(null);
@@ -9,7 +9,7 @@ const UserContextProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  // ذخیره کردن user در localStorage
+ 
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));

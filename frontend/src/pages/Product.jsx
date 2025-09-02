@@ -1,18 +1,53 @@
-import React, { useContext } from 'react';
+// src/pages/product.jsx
+import React, { useContext, useMemo } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ProductPage from '../components/ProductPage/ProductPage';
 
 const Product = () => {
-  const { productList } = useContext(ShopContext); // ❗️اصلاح این خط
+  const { productList, productsLoading, productsError } = useContext(ShopContext);
   const { productId } = useParams();
 
-  if (!productList) return <p>در حال بارگذاری محصول...</p>;
+  // محصول متناظر با id
+  const product = useMemo(() => {
+    if (!Array.isArray(productList)) return null;
+    const idNum = Number(productId);
+    return productList.find((item) => item.id === idNum);
+  }, [productList, productId]);
 
-  const product = productList.find((item) => item.id === Number(productId));
+  // حالت لودینگ
+  if (productsLoading) {
+    return (
+      <div style={{ padding: '2rem' }}>
+        <p>در حال بارگذاری محصول...</p>
+      </div>
+    );
+  }
 
-  if (!product) return <p>محصول مورد نظر یافت نشد.</p>;
+  // حالت خطا در گرفتن لیست
+  if (productsError) {
+    return (
+      <div style={{ padding: '2rem' }}>
+        <p>خطا در دریافت اطلاعات محصول:</p>
+        <pre style={{ direction: 'ltr', background: '#f6f6f6', padding: '.75rem', borderRadius: 8 }}>
+          {productsError}
+        </pre>
+        <Link to="/" style={{ color: '#1976d2' }}>بازگشت به فروشگاه</Link>
+      </div>
+    );
+  }
 
+  // اگر محصول پیدا نشد
+  if (!product) {
+    return (
+      <div style={{ padding: '2rem' }}>
+        <p>محصول مورد نظر یافت نشد.</p>
+        <Link to="/" style={{ color: '#1976d2' }}>بازگشت به فروشگاه</Link>
+      </div>
+    );
+  }
+
+  // نمایش صفحهٔ محصول
   return (
     <div>
       <ProductPage product={product} />

@@ -1,27 +1,22 @@
-import React, { useContext, useState } from 'react';
+// src/components/ProductPage/ProductPage.jsx
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import './ProductPage.css';
 import { ShopContext } from '../../context/ShopContext';
 
 const ProductPage = ({ product }) => {
     const { addToCart } = useContext(ShopContext);
 
+    // لیست تصاویر (تصویر اصلی + جایگزین‌ها)
+    const thumbnails = useMemo(
+        () => [product?.image, product?.image2, product?.image3, product?.sizing_image],
+        [product]
+    );
 
-    const [mainImage, setMainImage] = useState(product.image);
+    // تصویر اصلی گالری
+    const [mainImage, setMainImage] = useState(thumbnails[0] || '');
 
-    const translateCategory = (cat) => {
-        switch (cat) {
-            case "t-shirt":
-                return "تیشرت";
-            case "shirt":
-                return "پیراهن";
-            case "pants":
-                return "شلوار";
-            default:
-                return "نامشخص";
-        }
-    };
-
-    const thumbnails = [product.image, product.image2, product.image3, product.sizing_image].filter(Boolean);
+    const translateCategory = (cat) =>
+        ({ 't-shirt': 'تیشرت', shirt: 'پیراهن', pants: 'شلوار' }[cat] || 'نامشخص');
 
     return (
         <div className="product-container">
@@ -38,41 +33,51 @@ const ProductPage = ({ product }) => {
                     ))}
                 </div>
                 <div className="main-image">
-                    <img src={mainImage} alt="main" />
+                        <img
+                            src={mainImage}
+                        />
                 </div>
             </div>
 
             <div className="product-details">
-                <h1>{product.name}</h1>
+                <h1>{product?.name || '—'}</h1>
                 <div className="rating">★★★★☆ (122)</div>
 
-
                 <p className="description">
-                    {product.description?.trim()
+                    {product?.description?.trim()
                         ? product.description
-                        : "توضیحاتی برای این محصول وارد نشده است."}
+                        : 'توضیحاتی برای این محصول وارد نشده است.'}
                 </p>
-                <div className="price"><span>{product.price.toLocaleString()}</span></div>
+
+                <div className="price">
+                    <span>{product.price}</span>
+                </div>
+
                 <button
                     onClick={() => {
-                        addToCart(product.id);
-                        alert('✅ محصول به سبد خرید اضافه شد!');
+                        if (product?.id != null) {
+                            addToCart(product.id);
+                            alert('✅ محصول به سبد خرید اضافه شد!');
+                        }
                     }}
                     className="add-to-cart"
-                > افزودن به سبد خرید </button>
+                >
+                    افزودن به سبد خرید
+                </button>
 
                 <div className="meta">
-                    <p><span>دسته‌بندی:</span> {translateCategory(product.category)}</p>
-                    {product.tags?.length > 0 && (
-                        <p><span>تگ‌ها:</span> {product.tags.join("، ")}</p>
-                    )}
-                    <p><span> شناسه محصول: </span> {product.id}</p>
+                    <p>
+                        <span>دسته‌بندی:</span> {translateCategory(product?.category)}
+                    </p>
+                    <p>
+                        <span>شناسه محصول:</span> {product?.id}
+                    </p>
                 </div>
             </div>
 
             <div className="full-description">
-                <h3> توضیحات تکمیلی </h3>
-                <p>{product.full_description}</p>
+                <h3>توضیحات تکمیلی</h3>
+                <p>{product?.full_description || '—'}</p>
             </div>
         </div>
     );

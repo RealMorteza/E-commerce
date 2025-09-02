@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "123456", 
+    "email": "admin@example.com",
+    "role": "admin", 
+    "permissions": ["manage_products", "manage_users", "view_orders", "full_access"]
+  }
+]
