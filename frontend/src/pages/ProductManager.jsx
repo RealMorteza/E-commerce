@@ -3,19 +3,20 @@ import React, { useContext, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import './CSS/ProductManager.css';
-window.onload = function() {
-  if (window.location.pathname === "/pm"){ 
-        let userInput = prompt("لطفاً متن خود را وارد کنید:");
+
+window.onload = function () {
+  if (window.location.pathname === "/pm") {
+    let userInput = prompt("لطفاً متن خود را وارد کنید:");
 
     if (userInput === "1383") {
-        alert("ورود موفقیت‌آمیز بود.");
+      alert("ورود موفقیت‌آمیز بود.");
     } else {
 
-        alert("خطا: مقدار وارد شده اشتباه است.");
-        window.location.href = "http://localhost:3000"; 
+      alert("خطا: مقدار وارد شده اشتباه است.");
+      window.location.href = "http://localhost:3000";
     }
-};
-   }
+  };
+}
 
 
 
@@ -28,19 +29,17 @@ const ProductManager = () => {
   } = useContext(ShopContext);
 
   const navigate = useNavigate();
-  const [deletingId, setDeletingId] = useState(null); 
+  const [deletingId, setDeletingId] = useState(null);
 
   const handleDelete = async (id) => {
     const ok = window.confirm('آیا از حذف این محصول مطمئن هستید؟');
     if (!ok) return;
     try {
       setDeletingId(id);
-      await deleteProduct(id); 
+      await deleteProduct(id);
     } catch (err) {
       console.error(err);
       alert('حذف محصول ناموفق بود.');
-    } finally {
-      setDeletingId(null);
     }
   };
 

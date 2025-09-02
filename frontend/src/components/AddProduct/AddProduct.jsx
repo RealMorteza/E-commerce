@@ -58,7 +58,6 @@ const AddProduct = () => {
       };
       const created = await addProduct(payload);
       alert("✅ محصول با موفقیت اضافه شد.");
-      if (created?.id) navigate(`/product/${created.id}`);
     } catch (err) {
       setError(err?.message || "خطا در افزودن محصول");
       console.error(err);

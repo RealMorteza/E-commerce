@@ -16,15 +16,11 @@ useEffect(() => {
 
   fetch(`${API_BASE}/products`)
     .then((res) => {
-      if (!res.ok) throw new Error(`Failed to fetch products: ${res.status}`);
+      if (!res.ok) // if http request faild (fetch Products)
+        throw new Error(`Failed to fetch products: ${res.status}`); // response with error
       return res.json();
     })
     .then((data) => setProductList(Array.isArray(data) ? data : []))
-    .catch((err) => {
-      console.error(err);
-      setProductsError(err.message || "خطا در دریافت محصولات");
-    })
-    .finally(() => setProductsLoading(false));
 }, []);
 
 

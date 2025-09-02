@@ -1,4 +1,4 @@
-// src/components/ProductPage/ProductPage.jsx
+
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import './ProductPage.css';
 import { ShopContext } from '../../context/ShopContext';
@@ -6,13 +6,12 @@ import { ShopContext } from '../../context/ShopContext';
 const ProductPage = ({ product }) => {
     const { addToCart } = useContext(ShopContext);
 
-    // لیست تصاویر (تصویر اصلی + جایگزین‌ها)
+ 
     const thumbnails = useMemo(
         () => [product?.image, product?.image2, product?.image3, product?.sizing_image],
         [product]
     );
 
-    // تصویر اصلی گالری
     const [mainImage, setMainImage] = useState(thumbnails[0] || '');
 
     const translateCategory = (cat) =>
