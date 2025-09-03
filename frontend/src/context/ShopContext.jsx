@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useMemo, useState } from "react";
 
 export const ShopContext = createContext(null);
 
-const API_BASE = "http://localhost:3001/api";
+const API_BASE = "http://localhost:3000/api";
 
 const ShopContextProvider = ({ children }) => {
   // ------------------ Products (Server-backed) ------------------
@@ -16,11 +16,32 @@ useEffect(() => {
 
   fetch(`${API_BASE}/products`)
     .then((res) => {
-      if (!res.ok) // if http request faild (fetch Products)
-        throw new Error(`Failed to fetch products: ${res.status}`); // response with error
+      if (!res.ok) {
+        throw new Error(`Failed to fetch products: ${res.status}`);
+      }
       return res.json();
     })
-    .then((data) => setProductList(Array.isArray(data) ? data : []))
+    .then((data) => {
+      console.log("Fetched products:", data);
+
+      // اگر API مستقیم آرایه برگردونه:
+      if (Array.isArray(data)) {
+        setProductList(data);
+      } 
+      // اگر توی آبجکت products باشه:
+      else if (Array.isArray(data.products)) {
+        setProductList(data.products);
+      } 
+      else {
+        setProductList([]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      setProductsError(err.message || "خطا در دریافت محصولات");
+      setProductList([]);
+    })
+    .finally(() => setProductsLoading(false));
 }, []);
 
 
