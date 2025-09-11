@@ -24,11 +24,11 @@ useEffect(() => {
     .then((data) => {
       console.log("Fetched products:", data);
 
-      // اگر API مستقیم آرایه برگردونه:
+    
       if (Array.isArray(data)) {
         setProductList(data);
       } 
-      // اگر توی آبجکت products باشه:
+  
       else if (Array.isArray(data.products)) {
         setProductList(data.products);
       } 
